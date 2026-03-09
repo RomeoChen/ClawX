@@ -19,6 +19,7 @@
     "scripts": {
         "init": "pnpm install && pnpm run uv:download",
         "dev": "vite",
+        "dev:vue": "vite --config vite.vue.config.ts",
         "build": "vite build && zx scripts/bundle-openclaw.mjs && zx scripts/bundle-openclaw-plugins.mjs && electron-builder",
         "build:vite": "vite build",
         "bundle:openclaw-plugins": "zx scripts/bundle-openclaw-plugins.mjs",
@@ -42,9 +43,15 @@
         "postversion": "git push && git push --tags"
     },
     "dependencies": {
+        "@vicons/ionicons5": "^0.13.0",
         "clawhub": "^0.5.0",
         "electron-store": "^11.0.2",
         "electron-updater": "^6.8.3",
+        "naive-ui": "^2.43.2",
+        "pinia": "^3.0.4",
+        "vue": "^3.5.29",
+        "vue-i18n": "^11.3.0",
+        "vue-router": "^4.6.4",
         "ws": "^8.19.0"
     },
     "devDependencies": {
@@ -71,6 +78,7 @@
         "@typescript-eslint/eslint-plugin": "^8.56.0",
         "@typescript-eslint/parser": "^8.56.0",
         "@vitejs/plugin-react": "^5.1.4",
+        "@vitejs/plugin-vue": "^6.0.0",
         "autoprefixer": "^10.4.24",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",

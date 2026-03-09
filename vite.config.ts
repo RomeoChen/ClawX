@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import vue from '@vitejs/plugin-vue';
 import electron from 'vite-plugin-electron';
 import renderer from 'vite-plugin-electron-renderer';
 import { resolve } from 'path';
@@ -7,10 +8,10 @@ import { resolve } from 'path';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    vue(),
     react(),
     electron([
       {
-        // Main process entry file
         entry: 'electron/main/index.ts',
         onstart(options) {
           options.startup();
@@ -25,7 +26,6 @@ export default defineConfig({
         },
       },
       {
-        // Preload scripts entry file
         entry: 'electron/preload/index.ts',
         onstart(options) {
           options.reload();
@@ -45,6 +45,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
+      '@vue': resolve(__dirname, 'src-vue'),
       '@electron': resolve(__dirname, 'electron'),
     },
   },

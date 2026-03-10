@@ -31,3 +31,14 @@ Standard dev commands are in `package.json` scripts and `README.md`. Key ones:
 - **No database**: The app uses `electron-store` (JSON files) and OS keychain. No database setup is needed.
 - **AI Provider keys**: Actual AI chat requires at least one provider API key configured via Settings > AI Providers. The app is fully navigable and testable without keys.
 - **Token usage history implementation**: Dashboard token usage history is not parsed from console logs. It reads OpenClaw session transcript `.jsonl` files under the local OpenClaw config directory, extracts assistant messages with `message.usage`, and aggregates fields such as input/output/cache/total tokens and cost from those structured records.
+
+### Vue 3 Migration (feature/vue3 branch)
+
+The project has a parallel Vue 3 implementation in `src-vue/` directory. Key points:
+
+- **Vue entry**: Uses `vue-entry/index.html` + `vite.vue.config.ts`
+- **Run Vue dev server**: `pnpm run dev:vue`
+- **React dev server**: `pnpm dev` (uses `index.html` + `vite.config.ts`)
+- **UI Library**: Naive UI for Vue components
+- **State Management**: Pinia (same as React's Zustand)
+- **Styling**: Use **TailwindCSS** for all Vue components (NOT Naive UI styles)
